@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JNTUH Examination Management System</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <div id="login-view" class="view active">
+        <div class="login-overlay"></div>
+        <div class="login-card">
+            <h1>Jawaharlal Nehru Technological University, Hyderabad</h1>
+            <h2>Examination Management System</h2>
+            
+            <form id="login-form">
+                <div class="form-group">
+                    <label for="username">Username</label>
+                    <input type="text" id="username" name="username" required>
+                </div>
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" name="password" required>
+                </div>
+                <button type="submit" class="btn-primary">Login</button>
+                <div class="login-hints">
+                    <p>Admin: admin / admin123</p>
+                    <p>Faculty: faculty1 / faculty123</p>
+                    <p>Student: student1 / student123</p>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div id="dashboard-view" class="view">
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <h2>JNTUH EMS</h2>
+            </div>
+            <nav class="sidebar-nav">
+                <a href="#" data-target="dashboard-section" class="nav-item active">Dashboard</a>
+                <a href="#" data-target="exams-section" class="nav-item">Examinations</a>
+                <a href="#" data-target="schedules-section" class="nav-item">Schedules</a>
+                <a href="#" data-target="rooms-section" class="nav-item">Rooms</a>
+                <a href="#" data-target="users-section" class="nav-item">Users</a>
+                <a href="#" data-target="courses-section" class="nav-item">Courses</a>
+                <a href="#" data-target="results-section" class="nav-item">Results</a>
+            </nav>
+        </aside>
+
+        <main class="main-content">
+            <header class="top-header">
+                <div class="header-left">
+                    <h3 id="current-section-title">Dashboard</h3>
+                </div>
+                <div class="header-right">
+                    <span id="user-info"></span>
+                    <button id="logout-btn" class="btn-secondary">Logout</button>
+                </div>
+            </header>
+
+            <div class="content-area">
+                <section id="dashboard-section" class="content-section active">
+                    <div class="stat-grid" id="dashboard-stats"></div>
+                    <div class="card mt-4">
+                        <div class="card-header">
+                            <h4>Recent Activity</h4>
+                        </div>
+                        <div class="card-body">
+                            <table class="table" id="recent-activity-table">
+                                <thead>
+                                    <tr>
+                                        <th>Exam Name</th>
+                                        <th>Course</th>
+                                        <th>Type</th>
+                                        <th>Date</th>
+                                        <th>Status</th>
+                                    </tr>
+                                </thead>
+                                <tbody></tbody>
+                            </table>
+                        </div>
+                    </div>
+                </section>
+
+                <section id="exams-section" class="content-section">
+                    <div class="section-header">
+                        <h4>Examinations</h4>
+                        <button class="btn-primary" id="btn-create-exam">Create Exam</button>
+                    </div>
+                    <div class="card mt-4">
+                        <table class="table" id="exams-table">
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Course</th>
+                                    <th>Type</th>
+                                    <th>Total Marks</th>
+                                    <th>Date</th>
+                                    <th>Duration</th>
+                                    <th>Status</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody></tbody>
+                        </table>
+                    </div>
+                </section>
+
+                <section id="schedules-section" class="content-section">
+                    <div class="section-header">
+                        <h4>Schedules</h4>
+                        <div class="action-buttons">
+                            <button class="btn-primary" id="btn-create-schedule">Create Schedule</button>
+                            <button class="btn-secondary" id="btn-download-schedule">Download Report</button>
+                        </div>
+                    </div>
+                    <div class="card mt-4">
+                        <table class="table" id="schedules-table">
+                            <thead>
+                                <tr>
+                                    <th>Exam</th>
+                                    <th>Room</th>
+                                    <th>Invigilator</th>
+                                    <th>Date</th>
+                                    <th>Time</th>
+                                    <th>Seats</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody></tbody>
+                        </table>
+                    </div>
+                </section>
+
+                <section id="rooms-section" class="content-section">
+                    <div class="section-header">
+                        <h4>Rooms</h4>
+                        <button class="btn-primary" id="btn-create-room">Add Room</button>
+                    </div>
+                    <div class="card mt-4">
+                        <table class="table" id="rooms-table">
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Name</th>
+                                    <th>Building</th>
+                                    <th>Floor</th>
+                                    <th>Capacity</th>
+                                    <th>Projector</th>
+                                    <th>Status</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody></tbody>
+                        </table>
+                    </div>
+                </section>
+
+                <section id="users-section" class="content-section">
+                    <div class="section-header">
+                        <h4>Users</h4>
+                        <button class="btn-primary" id="btn-create-user">Add User</button>
+                    </div>
+                    <div class="card mt-4">
+                        <table class="table" id="users-table">
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Name</th>
+                                    <th>Username</th>
+                                    <th>Email</th>
+                                    <th>Role</th>
+                                    <th>Department</th>
+                                    <th>Status</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody></tbody>
+                        </table>
+                    </div>
+                </section>
+                
+                <section id="courses-section" class="content-section">
+                    <div class="section-header">
+                        <h4>Courses</h4>
+                        <button class="btn-primary" id="btn-create-course">Add Course</button>
+                    </div>
+                    <div class="card mt-4">
+                        <table class="table" id="courses-table">
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Code</th>
+                                    <th>Name</th>
+                                    <th>Department</th>
+                                    <th>Semester</th>
+                                    <th>Credits</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody></tbody>
+                        </table>
+                    </div>
+                </section>
+
+                <section id="results-section" class="content-section">
+                    <div class="section-header">
+                        <h4>Results</h4>
+                        <button class="btn-primary" id="btn-create-result">Add Result</button>
+                    </div>
+                    <div class="card mt-4">
+                        <table class="table" id="results-table">
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Exam</th>
+                                    <th>Student</th>
+                                    <th>Marks</th>
+                                    <th>Grade</th>
+                                    <th>Remarks</th>
+                                    <th>Published</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody></tbody>
+                        </table>
+                    </div>
+                </section>
+            </div>
+        </main>
+    </div>
+
+    <div id="modal-container" class="modal-overlay hidden">
+        <div class="modal-card">
+            <div class="modal-header">
+                <h3 id="modal-title">Modal Title</h3>
+            </div>
+            <div class="modal-body" id="modal-body">
+            </div>
+            <div class="modal-footer">
+                <button class="btn-secondary" id="modal-cancel">Cancel</button>
+                <button class="btn-primary" id="modal-save">Save</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="toast-container" class="toast-container"></div>
+
+    <script src="js/app.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/dashboard.js"></script>
+    <script src="js/exams.js"></script>
+    <script src="js/schedules.js"></script>
+    <script src="js/rooms.js"></script>
+    <script src="js/users.js"></script>
+    <script src="js/results.js"></script>
+</body>
+</html>
